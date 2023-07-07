@@ -4,8 +4,6 @@ name: deploy
 
 on:
   push:
-    branches:
-      - main
     tags:
       - v*
 
@@ -17,7 +15,7 @@ jobs:
       - name: Infer version from changelog
         id: inferred-version
         run: |
-          echo "SEMVER=v`head -n 1 CHANGELOG.rst | grep -oP '(?<=\*\*)[0-9]+\.[0-9]+\.[0-9]+(?= -)'`" >> $GITHUB_OUTPUT
+          echo "SEMVER=v`head -n 1 $GITHUB_WORKSPACE/CHANGELOG.rst | grep -oP '(?<=\*\*)[0-9]+\.[0-9]+\.[0-9]+(?= -)'`" >> $GITHUB_OUTPUT
 #      - name: Create tag
 #        uses: actions/github-script@v5
 #        with:
