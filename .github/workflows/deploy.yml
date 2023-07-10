@@ -33,6 +33,7 @@ jobs:
         run: |
           ls -la $GITHUB_WORKSPACE
           echo ${{ github.workspace }}
+          echo ${{ steps.inferred-version.SEMVER }} 
           gh release create ${{ steps.inferred-version.SEMVER }} --generate-notes --verify-tag
       - name: Set up Python
         uses: actions/setup-python@v4
