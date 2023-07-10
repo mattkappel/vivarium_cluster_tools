@@ -29,7 +29,10 @@ jobs:
       - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: gh release create ${{ steps.inferred-version.SEMVER }} --generate-notes --verify-tag
+        run: |
+          echo $GITHUB_WORKSPACE
+          echo ${{ github.workspace }}
+          gh release create ${{ steps.inferred-version.SEMVER }} --generate-notes --verify-tag
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
