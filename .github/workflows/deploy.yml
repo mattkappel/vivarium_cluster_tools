@@ -28,7 +28,7 @@ jobs:
 #            })
       - name: Create Release
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_KEY }}
         run: |
           gh release create ${{ steps.inferred-version.outputs.SEMVER }} --generate-notes --verify-tag
       - name: Set up Python
@@ -47,5 +47,6 @@ jobs:
         run: |
           python setup.py sdist bdist_wheel
           echo "TEST COMPLETED"
+          false
 #          twine upload dist/*
 
