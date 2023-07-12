@@ -30,6 +30,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PRIVATE_KEY }}
         run: |
+          gh auth token 
           gh release create ${{ steps.inferred-version.outputs.SEMVER }} --generate-notes --verify-tag
       - name: Set up Python
         uses: actions/setup-python@v4
