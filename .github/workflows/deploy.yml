@@ -28,9 +28,9 @@ jobs:
 #            })
       - name: Create Release
         env:
-          GH_TOKEN: ${{ secrets.GH_PRIVATE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+#           GH_TOKEN: ${{ secrets.GH_PRIVATE_KEY }}
         run: |
-          gh auth token 
           gh release create ${{ steps.inferred-version.outputs.SEMVER }} --generate-notes --verify-tag
       - name: Set up Python
         uses: actions/setup-python@v4
